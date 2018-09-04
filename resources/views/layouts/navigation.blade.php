@@ -23,24 +23,18 @@
 
     
 </head>
-
-
     <body class="gray-bg">
-
-
+            {{-- /////////////////// menu Horizontal --}}
      <div id="page-wrapper" class="gray-bg">
             <div class="row border-bottom">
                 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">         
                     <ul class="nav navbar-top-links navbar-right">
-
                           <!-- Cambio de Idioma -->
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                <i>{{__("Cambiar de Idioma")}}</i>
-                                
+                                <i>{{__("Cambiar de Idioma")}}</i>                                
                             </a>
-                            <ul class="dropdown-menu dropdown-messages">
-                                                   
+                            <ul class="dropdown-menu dropdown-messages">                                                   
                                 <li>
                                     <div class="text-center link-block">
                                         <a href="{{ route('set_language', ['es'])}}">
@@ -48,6 +42,7 @@
                                         </a>
                                     </div>
                                 </li>
+
                                 <li class="divider"></li> 
                                 <li>
                                     <div class="text-center link-block">

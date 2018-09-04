@@ -1,0 +1,1 @@
+<li><a class="nav-link" href="{{ route('login')}}">{{__("Materias")}}</a></li>

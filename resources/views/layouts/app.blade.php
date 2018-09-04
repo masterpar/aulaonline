@@ -70,7 +70,8 @@
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="search_results.html#"><i class="fa fa-search"></i> </a>
         </div>
             <ul class="nav navbar-top-links navbar-right">
-
+                {{--  Enlaces según role --}}
+                @include('layouts.navigations.'.\App\User::navigation())
                  {{-- Cambio de Idioma --}}
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -198,21 +199,19 @@
 
 
                 <li>
+                    <a href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();">
+                        {{ __('Salir') }}
+                    </a>
 
-                <a href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">
-                    {{ __('Salir') }}
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-                    
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>                    
                 </li>
             </ul>
-
         </nav>
+
         </div>
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-9">
