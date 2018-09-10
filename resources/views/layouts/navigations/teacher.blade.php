@@ -14,3 +14,11 @@
         <li>
         	 <a href="#"><i class="fa fa-book"></i> <span class="nav-label">{{__("Cursos")}}</span></a>
         </li>
+
+        <li>
+        	 <a href="#"><i class="fa fa-folder"></i> <span class="nav-label">{{__("Cursos Creados")}}</span></a>
+        </li>
+
+        <li>
+        	 <a href="#"><i class="fa fa-plus-circle"></i> <span class="nav-label">{{__("Crear Curso")}}</span></a>
+        </li>

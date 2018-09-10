@@ -45,14 +45,15 @@
                         </div>
 
                     </li>
+      
                     <li  class="active">
                         <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Usuario</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="index.html">Datos</a></li>
+                                     {{-- /////////////////// menu según role de usuario --}}  
+                                @include('layouts.navigations.'.\App\User::navigation())  
                         </ul>
-                    </li>         
-                        
-                    
+                    </li> 
+   
                 </ul>
 
             </div>
@@ -70,8 +71,7 @@
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="search_results.html#"><i class="fa fa-search"></i> </a>
         </div>
             <ul class="nav navbar-top-links navbar-right">
-                {{--  Enlaces según role --}}
-                @include('layouts.navigations.'.\App\User::navigation())
+                
                  {{-- Cambio de Idioma --}}
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
