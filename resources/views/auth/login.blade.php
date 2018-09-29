@@ -1,53 +1,88 @@
+@extends('auth.layouts.encabezadoAuth')
 
-@extends('layouts.navigation')
-@section('contenido')
+@section('content')
+<div class="page-header">
+    <div class="page-header-image" style="background-image:url(/backend/images/login.jpg)"></div>
+    <div class="container">
+        <div class="col-md-12 content-center">
+            <div class="card-plain">
+                <form class="form" method=" POST" action="{{ route('login') }}" aria-label="{{ __('login') }}">
+                    @csrf
+                    <div class="header">
+                        <div class="logo-container">
+                            <img src="/backend/images/logo.svg" alt="">
+                        </div>
+                        <h5>Ingresar</h5>
+                    </div>
+                    <div class="content">  
+                                                                    {{-- nombre   --}} 
+                        <div class="input-group">
+                            <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}"
+                            name="name" placeholder="nombre" value="{{ old('name') }}" required autofocus>
+                            <span class="input-group-addon">
+                                <i class="zmdi zmdi-account"></i>
+                            </span>
+                        </div>
+                                       {{-- errors --}}
+                                    @if ($errors->has('name'))
+                                                        <li class="alert alert-danger" role="alert">
+                                                            <strong>{{ $errors->first('name') }}</strong>
+                                                        </li>
+                                    @endif
+                                    {{--  end-erros --}}
+                                                                        {{-- contraseña   --}} 
+                        <div class="input-group">
+                            <input type="password" placeholder="Constraseña" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}"
+                             name="password" value="{{ old('password') }}" required autofocus>
+                            <span class="input-group-addon">
+                                <i class="zmdi zmdi-lock"></i>
+                            </span>
+                        </div>
+                                         {{-- errors --}}
+                                    @if ($errors->has('password'))
+                                                        <li class="alert alert-danger" role="alert">
+                                                            <strong>{{ $errors->first('password') }}</strong>
+                                                        </li>
+                                    @endif
+                                    {{--  end-erros --}}   
 
+                        
+                        {{--  Inicar por redes sociales --}}
+                             @include('auth.layouts.loginSocial')
+                    </div>
+                    <div class="footer text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">{{ __('INGRESAR')}}</button>
+                        <hr><a href="{{ route('password.request') }}"><small>{{ __('Recordar mi Contraseña?') }}</small></a>                     
+                    </div>                       
 
-<body class="gray-bg"> 
-    <div class="middle-box text-center loginscreen  animated fadeInDown">
-             <div>
-                <h1 class="logo-name">Aula5</h1>
-
+                </form>
             </div>
-            <h3>Bienvenido a Aula Online</h3>
-            <p>Plataforma de Cursos Online </p>
-            <p>Iniciar Sesión</p>
-
-
-           <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
-                        @csrf
-
-                <div class="form-group">
-                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="E-mail" name="email"
-                    value="{{ old('email') }}" required autofocus>
-                </div>
-
-                         @if ($errors->has('email'))
-                                <li class="alert alert-danger" role="alert">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </li>
-                         @endif
-
-                <div class="form-group">
-                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                    placeholder="Contraseña" name="password" required>
-                </div>
-
-                        @if ($errors->has('password'))
-                            <li class="alert alert-danger" role="alert">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </li>
-                        @endif
-
-                <button type="submit" class="btn btn-success block full-width m-b">Entrar</button>
-                <a href="{{ route('password.request') }}"><small>Olvidaste tu Contraseña?</small></a>
-            </form>
-
-           {{--  Inicar por redes sociales --}}
-            @include('layouts.loginSocial')
-            
+        </div>
+            <footer class="footer">
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="#" target="_blank">Contactos</a></li>
+                </ul>
+            </nav>
+            <div class="copyright">
+                &copy;
+                <script>
+                    document.write(new Date().getFullYear())
+                </script>,
+                <span>Diseñado por<a href="#" target="_blank">Blink</a></span>
+            </div>
+        </div>
+    </footer>
     </div>
 
-</body>
+</div>
 
- @endsection
+@endsection
+
+
+
+           
+            
+
+

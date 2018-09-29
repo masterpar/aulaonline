@@ -1,20 +1,22 @@
 <?php
 
+
+
 Route::get('/set_language/{lang}', 'Controller@setLanguage')->name('set_language');
 
 Route::get('login/{driver}', 'Auth\LoginController@redirectToProvider')->name('social_auth');
 
 Route::get('login/{driver}/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::get('/cursos', 'HomeController@index');
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'curso'], function (){
+Route::get('/{course}','CourseController@show')->name('courses.detail');
+});
 
 Route::get('/images/{path}/{attachment}', function($path, $attachment){
 	$file = sprintf('storage/%s/%s', $path, $attachment);

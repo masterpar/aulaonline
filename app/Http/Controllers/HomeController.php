@@ -21,6 +21,11 @@ class HomeController extends Controller
         ->where('status', Course::PUBLUSHED)
         ->latest()
         ->paginate(3);
-        return view('cursos.index', compact('courses'));
+
+    $populares = Course::where('status', Course::PUBLUSHED)
+        ->orderBy('id','DESC')
+        ->limit(5)
+        ->get();
+        return view('inicio', compact('courses','populares')); 
     }
 }

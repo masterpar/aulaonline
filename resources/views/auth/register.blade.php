@@ -1,154 +1,115 @@
-{{-- @extends('layouts.app')
-@section('content') --}}
+@extends('auth.layouts.encabezadoAuth')
 
-@extends('layouts.cabecera')
-@section('contenido')
+@section('content')
+<div class="page-header">
+    <div class="page-header-image" style="background-image:url(/backend/images/login.jpg)"></div>
+    <div class="container">
+        <div class="col-md-12 content-center">
+            <div class="card-plain">
+                <form class="form" method=" POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+                    @csrf
+                    <div class="header">
+                        <div class="logo-container">
+                            <img src="/backend/images/logo.svg" alt="">
+                        </div>
+                        <h5>Registrarme</h5>
+                        <span>Registrarme como nuevo Miembro</span>
+                    </div>
+                    <div class="content">  
+                                                                    {{-- nombre   --}}                                            
+                        <div class="input-group">
+                            <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}"
+                            name="name" placeholder="Nombre"  value="{{ old('name') }}" required autofocus>
+                            <span class="input-group-addon">
+                                <i class="zmdi zmdi-account-circle"></i>
+                            </span>
+                        </div>
+                                    {{-- errors --}}
+                                    @if ($errors->has('name'))
+                                                        <li class="alert alert-danger" role="alert">
+                                                            <strong>{{ $errors->first('name') }}</strong>
+                                                        </li>
+                                    @endif
+                                    {{--  end-erros --}}
+                                                                    {{-- email   --}} 
+                        <div class="input-group">
+                            <input type="text" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
+                            name="email" placeholder="Email" value="{{ old('email') }}" required autofocus>
+                            <span class="input-group-addon">
+                                <i class="zmdi zmdi-email"></i>
+                            </span>
+                        </div>
+                                       {{-- errors --}}
+                                    @if ($errors->has('email'))
+                                                        <li class="alert alert-danger" role="alert">
+                                                            <strong>{{ $errors->first('email') }}</strong>
+                                                        </li>
+                                    @endif
+                                      {{--  end-erros --}}
+                                                                   {{-- contraseña   --}} 
+                        <div class="input-group">
+                            <input type="password" placeholder="Constraseña" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}"
+                             name="password" value="{{ old('password') }}" required autofocus>
+                            <span class="input-group-addon">
+                                <i class="zmdi zmdi-lock"></i>
+                            </span>
+                        </div>
+                                         {{-- errors --}}
+                                    @if ($errors->has('password'))
+                                                        <li class="alert alert-danger" role="alert">
+                                                            <strong>{{ $errors->first('password') }}</strong>
+                                                        </li>
+                                    @endif
+                                    {{--  end-erros --}}   
 
- <div class="middle-box text-center loginscreen   animated fadeInDown">
-        <div>
-            <div>
+                                                                  {{-- confirmar contraseña   --}} 
+                        <div class="input-group">
+                            <input type="password" placeholder="Confirmar Constraseña" class="form-control {{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}"
+                             name="password_confirmation" value="{{ old('password_confirmation') }}" required autofocus>
+                            <span class="input-group-addon">
+                                <i class="zmdi zmdi-lock"></i>
+                            </span>
+                        </div>
 
-                <h1 class="logo-name">Aula5</h1>
-
-            </div>
-            <h3>Registro </h3>
-            <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
-                        @csrf
-                <div class="form-group">
-                    <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                    placeholder="Nombre" name="name" value="{{ old('name') }}" required autofocus>
-                </div>
-                        {{-- errors --}}
-                        @if ($errors->has('name'))
-                                            <li class="alert alert-danger" role="alert">
-                                                <strong>{{ $errors->first('name') }}</strong>
-                                            </li>
-                        @endif
-
-                <div class="form-group">
-                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                    name="email" placeholder="E-mail" value="{{ old('email') }}" required>
-                </div>
-                 {{-- errors --}}
-                        @if ($errors->has('name'))
-                                            <li class="alert alert-danger" role="alert">
-                                                <strong>{{ $errors->first('name') }}</strong>
-                                            </li>
-                        @endif            
-
-                <div class="form-group">
-                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                    placeholder="Contraseña" name="password" required>
-                </div>
-
-                <div class="form-group">
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirmar Contraseña" required>
-                </div>
-                {{-- errors --}}
-                        @if ($errors->has('name'))
-                                            <li class="alert alert-danger" role="alert">
-                                                <strong>{{ $errors->first('name') }}</strong>
-                                            </li>
-                        @endif   
-
-                <div class="form-group">
-                        <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> Acepto los Términos y Condiciones </label></div>
-                </div>
-                <button type="submit" class="btn btn-success block full-width m-b">Registrar</button>
-            </form>
-                   {{--  Inicar por redes sociales --}}
-            @include('layouts.loginSocial')
-            <p class="m-t"> <small>Aula Online cursos en Linea &copy; 2018</small> </p>
-        </div>
-    </div>
-
-    <!-- Mainly scripts -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- iCheck -->
-    <script src="js/plugins/iCheck/icheck.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-green',
-                radioClass: 'iradio_square-green',
-            });
-        });
-    </script>
-
-
-{{-- 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Registrarme') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
+                                 {{-- errors --}}
+                                @if ($errors->has('password_confirmation'))
+                                                    <li class="alert alert-danger" role="alert">
+                                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                                    </li>
                                 @endif
-                            </div>
+                                {{--  end-erros --}}  
+
+                    </div>
+                    <div class="checkbox">
+                            <input id="terms" type="checkbox">
+                            <label for="terms">
+                                    Leo y acepto los <a href="javascript:void(0);">términos</a>
+                            </label>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Contraseña') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Registrarme') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    <div class="footer text-center">
+                        <a href="index.html" class="btn btn-primary btn-round btn-lg btn-block waves-effect waves-light">REGISTRARME</a>                        
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</div> --}}
+    <footer class="footer">
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="#" target="_blank">Contactos</a></li>
+                </ul>
+            </nav>
+            <div class="copyright">
+                &copy;
+                <script>
+                    document.write(new Date().getFullYear())
+                </script>,
+                <span>Diseñado por<a href="#" target="_blank">Blink</a></span>
+            </div>
+        </div>
+    </footer>
+</div>
+
 @endsection
+

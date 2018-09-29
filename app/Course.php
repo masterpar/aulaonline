@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Category;
+use App\Course;
 use App\Goal;
 use App\Level;
 use App\Requirement;
@@ -17,9 +18,16 @@ class Course extends Model
     const PENDING = 2;
     const REJECTED = 3;
 
+    protected $withCount =  ['students','reviews' ];
+
     public function pathAttachment()
     {
-        return "/images/courses" . $this->picture;
+        return "/images/courses/" . $this->picture;
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 
     public function category()
@@ -55,6 +63,20 @@ class Course extends Model
      public function teacher()
     {
     	return $this->belongsTo(Teacher::class);
+    }
+
+    public function getCustomRatingAttribute()
+    {
+        return $this->reviews->avg('rating');
+    }
+
+    public function relatedCourses()
+    {
+        return Course::with('reviews')->whereCategoryId($this->category->id)
+        ->where('id',$this->id)
+        ->latest()
+        ->limit(6)
+        ->get();
     }
 
 }
