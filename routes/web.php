@@ -8,11 +8,9 @@ Route::get('login/{driver}', 'Auth\LoginController@redirectToProvider')->name('s
 
 Route::get('login/{driver}/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'curso'], function (){
 Route::get('/{course}','CourseController@show')->name('courses.detail');

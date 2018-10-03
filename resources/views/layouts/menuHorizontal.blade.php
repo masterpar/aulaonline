@@ -195,28 +195,7 @@
                 <a class="navbar-brand" href="index.html"><img src="/backend/images/logo.svg" width="30" alt="Oreo"><span class="m-l-10">AulaOnline</span></a>
             </div>
         </li>
-        <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="zmdi zmdi-notifications"></i>
-            <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
-            </a>
-            <ul class="dropdown-menu pullDown">
-                <li class="body">
-                    <ul class="menu list-unstyled">
-                        <li>
-                            <a href="javascript:void(0);">
-                                <div class="media">
-                                    <img class="media-object" src="/backend/images/xs/avatar6.jpg" alt="">
-                                    <div class="media-body">
-                                        <span class="name">Camilo <span class="time">1 Agosto</span></span>
-                                        <span class="message">Primer Mensaje</span>                                        
-                                    </div>
-                                </div>
-                            </a>
-                        </li>                        
-                    </ul>
-                </li>
-                <li class="footer"> <a href="javascript:void(0);">Todos los mensajes</a> </li>
-            </ul>
-        </li>
+
         <li class="hidden-sm-down" >
             <div class="input-group">                
                 <input type="text" class="form-control" placeholder="Buscar...">
@@ -227,17 +206,7 @@
         </li>
 
          <li class="float-right">
-                <a class="btn btn-primary btn-sm" href="{{route('register')}}"><i class="material-icons"">person_add</i> Registrarme</a>
-                <a class="btn btn-primary btn-sm" href="{{route('login')}}"><i class="material-icons"">perm_identity</i>Ingresar</a>
-                <a class="btn btn-primary btn-sm" data-close="true" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();">
-                        {{ __('Salir') }}
-                    <i class="zmdi zmdi-power"></i></a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
-                        @csrf
-                    </form>                    
+            @include('layouts.navigations.' . \App\User::navigation())                              
             </li>
 
         {{-- <li class="float-right">

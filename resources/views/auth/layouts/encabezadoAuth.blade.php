@@ -2,6 +2,7 @@
 <html class="no-js " lang="en">
 <head>
 <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
@@ -23,7 +24,7 @@
     <nav class="navbar navbar-expand-lg fixed-top navbar-transparent">
         <div class="container">        
             <div class="navbar-translate n_logo">
-                <a class="navbar-brand" href="javascript:void(0);" title="" target="_blank">Aula <strong>Online</strong></a>
+                <a class="navbar-brand" href="{{url('/')}}" title="" target="_blank">Aula <strong>Online</strong></a>
                 <button class="navbar-toggler" type="button">
                     <span class="navbar-toggler-bar bar1"></span>
                     <span class="navbar-toggler-bar bar2"></span>
@@ -57,7 +58,10 @@
                         </a>
                     </li>                
                     <li class="nav-item">
-                        <a class="nav-link btn btn-white btn-round" href="{{route('login')}}">INGRESAR</a>
+                        <a class="nav-link btn btn-white btn-round" href="{{url('/login')}}">INGRESAR</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-white btn-round" href="{{url('/register')}}">REGISTRARME</a>
                     </li>
                 </ul>
             </div>
@@ -68,8 +72,8 @@
 @yield('content')
 
 <!-- Jquery Core Js -->
-<script src="assets/bundles/libscripts.bundle.js"></script>
-<script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
+<script src="/backend/bundles/libscripts.bundle.js"></script>
+<script src="/backend/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
     <script>
            $(".navbar-toggler").on('click',function() {
             $("html").toggleClass("nav-open");

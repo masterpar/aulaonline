@@ -25,6 +25,15 @@
     </div>
 </div>
 
+<style>
+    .p-r-10, section.content {
+    padding-right: 0px;
+}
+.p-l-10, section.content, .activity_2 h5 {
+    padding-left: 0px;
+}
+</style>
+
 <!-- Overlay For Sidebars -->
 <div class="overlay"></div>
 
@@ -166,6 +175,23 @@
         </div>
     </div>
 </section>
+                                                                {{-- pie de pagina --}}
+<footer class="footer" style="background-image: url(backend/images/footer.jpg); background-size: 100%; min-height: 110px; text-align:center; color:#fff; no-repeat; ">
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="#" target="_blank">Contactos</a></li>
+                </ul>
+            </nav>
+            <div class="copyright">
+                &copy;
+                <script>
+                    document.write(new Date().getFullYear())
+                </script>,
+                <span>Diseñado por<a href="#" target="_blank">Blink</a></span>
+            </div>
+        </div>
+    </footer>
 <!-- Jquery Core Js --> 
 <script src="/backend/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
 <script src="/backend/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 

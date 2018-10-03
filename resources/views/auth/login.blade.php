@@ -6,28 +6,30 @@
     <div class="container">
         <div class="col-md-12 content-center">
             <div class="card-plain">
-                <form class="form" method=" POST" action="{{ route('login') }}" aria-label="{{ __('login') }}">
+                <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="header">
                         <div class="logo-container">
                             <img src="/backend/images/logo.svg" alt="">
                         </div>
                         <h5>Ingresar</h5>
+
                     </div>
                     <div class="content">  
                                                                     {{-- nombre   --}} 
                         <div class="input-group">
-                            <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}"
-                            name="name" placeholder="nombre" value="{{ old('name') }}" required autofocus>
+                            <input type="text" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
+                            name="email" placeholder="email" value="{{ old('email') }}" required autofocus>
                             <span class="input-group-addon">
                                 <i class="zmdi zmdi-account"></i>
                             </span>
                         </div>
+
                                        {{-- errors --}}
-                                    @if ($errors->has('name'))
-                                                        <li class="alert alert-danger" role="alert">
-                                                            <strong>{{ $errors->first('name') }}</strong>
-                                                        </li>
+                                    @if ($errors->has('email'))
+                                        <span >
+                                        <li class="alert alert-danger">{{ $errors->first('email') }}</li>
+                                        </span>
                                     @endif
                                     {{--  end-erros --}}
                                                                         {{-- contraseña   --}} 
@@ -40,9 +42,9 @@
                         </div>
                                          {{-- errors --}}
                                     @if ($errors->has('password'))
-                                                        <li class="alert alert-danger" role="alert">
-                                                            <strong>{{ $errors->first('password') }}</strong>
-                                                        </li>
+                                         <span >
+                                        <li class="alert alert-danger">{{ $errors->first('password') }}</li>
+                                        </span>
                                     @endif
                                     {{--  end-erros --}}   
 

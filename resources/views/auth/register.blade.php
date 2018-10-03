@@ -16,10 +16,10 @@
                         <span>Registrarme como nuevo Miembro</span>
                     </div>
                     <div class="content">  
-                                                                    {{-- nombre   --}}                                            
+                                                                    {{-- nombres   --}}                                            
                         <div class="input-group">
                             <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}"
-                            name="name" placeholder="Nombre"  value="{{ old('name') }}" required autofocus>
+                            name="name" placeholder="Nombre(s)"  value="{{ old('name') }}" required autofocus>
                             <span class="input-group-addon">
                                 <i class="zmdi zmdi-account-circle"></i>
                             </span>
@@ -31,6 +31,24 @@
                                                         </li>
                                     @endif
                                     {{--  end-erros --}}
+
+                                                                       {{-- apellidos   --}}                                            
+                        <div class="input-group">
+                            <input type="text" class="form-control {{ $errors->has('last_name') ? ' is-invalid' : '' }}"
+                            name="last_name" placeholder="Apellido(s)"  value="{{ old('last_name') }}" required autofocus>
+                            <span class="input-group-addon">
+                                <i class="zmdi zmdi-account-circle"></i>
+                            </span>
+                        </div>
+                                    {{-- errors --}}
+                                    @if ($errors->has('last_name'))
+                                                        <li class="alert alert-danger" role="alert">
+                                                            <strong>{{ $errors->first('last_name') }}</strong>
+                                                        </li>
+                                    @endif
+                                    {{--  end-erros --}}
+
+
                                                                     {{-- email   --}} 
                         <div class="input-group">
                             <input type="text" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
@@ -64,7 +82,7 @@
 
                                                                   {{-- confirmar contraseña   --}} 
                         <div class="input-group">
-                            <input type="password" placeholder="Confirmar Constraseña" class="form-control {{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}"
+                            <input type="password" placeholder="Confirmar Contraseña" class="form-control {{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}"
                              name="password_confirmation" value="{{ old('password_confirmation') }}" required autofocus>
                             <span class="input-group-addon">
                                 <i class="zmdi zmdi-lock"></i>
