@@ -1,201 +1,346 @@
-<!doctype html>
-<html class="no-js " lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-<meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
-<!-- CSRF Token -->
-<meta name="csrf-token" content="{{ csrf_token() }}">
-<title>{{ config('Aula Online') }}</title>
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<!-- Favicon-->
-<link rel="stylesheet" href="/backend/plugins/bootstrap/css/bootstrap.min.css">
-<!-- Custom Css -->
-<link  rel="stylesheet" href="/backend/css/main.css">
-<link rel="stylesheet" href="/backend/css/blog.css">
-<link rel="stylesheet" href="/backend/css/color_skins.css">
-</head>
-<body class="theme-purple ls-toggle-menu" style="overflow: auto;" >
-<!-- Page Loader -->
-<div class="page-loader-wrapper">
-    <div class="loader">
-        <div class="m-t-30"><img class="zmdi-hc-spin" src="/backend/images/logo.svg" width="48" height="48" alt="Oreo"></div>
-        <p>Cargando...</p>        
+        {{-- header  --}}
+@extends('layouts.header-inicio')
+
+@section('contenido')
+
+<body class="page-homepage-courses">
+<!-- Wrapper -->
+<div class="wrapper">
+
+
+<!-- Header -->
+<div class="navigation-wrapper">
+
+                {{--  menú usuario --}}
+    <div class="secondary-navigation-wrapper">
+        <div class="container">
+            <div class="navigation-contact pull-left">Informes:  <span class="opacity-70">000-123-456-789</span></div>
+            <ul class="secondary-navigation list-unstyled pull-right">
+                @include('layouts.navigations.' . \App\User::navigation() )                
+            </ul>
+        </div>
+    </div><!-- /.menú usuario -->
+
+@include('layouts.menu')
+
+    <div class="background">
+        <img src="assets/img/background-city.png"  alt="background">
     </div>
 </div>
+<!-- end Header -->
 
-<style>
-    .p-r-10, section.content {
-    padding-right: 0px;
-}
-.p-l-10, section.content, .activity_2 h5 {
-    padding-left: 0px;
-}
-</style>
+<!-- Homepage Slider -->
+@include('layouts.slider')
+<!-- end Homepage Slider -->
 
-<!-- Overlay For Sidebars -->
-<div class="overlay"></div>
+<!-- Page Content -->
+<div id="page-content">
+    <section id="featured-courses">
+        <div class="block">
+            <div class="container">
+                <header><h2>Cursos Destacados</h2></header>
+                <div class="row">
 
-<!-- menúPrincipal -->
-@include('layouts.menuHorizontal')
-<!-- Menú Admin -->
-@include('layouts.menuAdmin')
-
-
-<section class="content blog-page">
-  {{-- Encabezado --}}
-   @include('layouts.jumbotron')
-                                                    {{-- post --}}
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-12 left-box">
-                                           {{--  cursos --}}
-                @foreach ($courses as $course)
-                                  
-                <div class="card single_post">
-                    <div class="body">
-                        <h3 class="m-t-0 m-b-5"><a href="blog-details.html">{{$course->name}}</a></h3>
-                        <ul class="meta">
-                            <li><a href="#"><i class="zmdi zmdi-account col-blue"></i>Creado por: {{$course->teacher->title}}</a></li>
-                            <li><a href="#"><i class="zmdi zmdi-label col-amber"></i>{{$course->category->name}}</a></li>
-                            <li><a href="#"><i class="zmdi zmdi-comment-text col-blue"></i>Comentarios: 3</a></li>
-                        </ul>
-                    </div>                    
-                    <div class="body">
-                        <div class="img-post m-b-15">
-                            <img src="{{$course->pathAttachment()}}">
-                            <div class="social_share">                            
-                                <button class="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-facebook"></i></button>
-                                <button class="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-twitter"></i></button>
-                                <button class="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-instagram"></i></button>
-                            </div>
-                        </div>
-                        <p>{{$course->description}}</p>
-                        <a href="blog-details.html" title="read more" class="btn btn-round btn-info">Seguir Leyendo</a>                        
-                    </div>
-                </div>                
-                     @endforeach
-                                            {{-- fin cursos --}}
-
-                                           {{--  paginación --}}
-               {{--  <ul class="pagination pagination-primary">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>    --}}
-                {{ $courses->links()}}     
-
-                                            {{--  fin paginación    --}}     
-            </div>
-            <div class="col-lg-4 col-md-12 right-box">
-                <div class="card">
-                    <div class="body search">
-                        <div class="input-group m-b-0">
-                            <input type="text" class="form-control" placeholder="Buscar...">
-                            <span class="input-group-addon">
-                                <i class="zmdi zmdi-search"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="header">
-                        <h2><strong>Popular</strong> Posts</h2>                        
-                    </div>
-                    <div class="body widget popular-post">
-                        <div class="row">
-                            <div class="col-xl-12 col-lg-12">
-                                <div class="border single_post">                                    
-                                    <div class="img-post m-b-5">
-                                        <img src="/backend/images/blog/blog-page-2.jpg" alt="Awesome Image">                                        
-                                    </div>
-                                    <p class="m-b-0">Apple Introduces Search Ads Basic</p>
-                                    <small>Dec 20, 2017</small>
+                    @forelse($courses as $course)
+                    <div class="col-md-3 col-sm-3">
+                        <article class="featured-course">
+                            <figure class="image">
+                                <div class="image-wrapper"><a href="course-detail-v1.html"><img src="assets/img/course-01.jpg"></a></div>
+                            </figure>
+                            <div class="description">
+                                <a href="#"><h3>Character Drawing: Basic and Advanced Principles</h3></a>
+                                <a href="#" class="course-category">Art and Design</a>
+                                <hr>
+                                <div class="course-meta">
+                                    <span class="course-date"><i class="fa fa-calendar-o"></i>01-03-2014</span>
+                                    <span class="course-length"><i class="fa fa-clock-o"></i>3 months</span>
                                 </div>
-                                <div class="border single_post m-t-20">
-                                    <div class="img-post m-b-5">
-                                        <img src="/backend/images/blog/blog-page-3.jpg" alt="Awesome Image">                                            
-                                    </div>
-                                    <p class="m-b-0">new rules, more cars, more races</p>
-                                    <small>Dec 20, 2017</small>
-                                </div>
+                                <div class="stick-to-bottom"><a href="course-detail-v1.html" class="btn btn-framed btn-color-grey btn-small">Ver Mas</a></div>
                             </div>
-                        </div>
-                    </div>
-                </div>                
-                <div class="card">
-                    <div class="header">
-                        <h2><strong>Tag</strong> Clouds</h2>                        
-                    </div>
-                    <div class="body widget tag-clouds">
-                        <ul class="list-unstyled m-b-0">
-                            <li><a href="#" class="tag badge badge-default">Design</a></li>
-                            <li><a href="#" class="tag badge badge-success">Project</a></li>
-                            <li><a href="#" class="tag badge badge-info">Creative UX</a></li>
-                            <li><a href="#" class="tag badge badge-success">Wordpress</a></li>
-                            <li><a href="#" class="tag badge badge-warning">HTML5</a></li>
-                        </ul>
-                    </div>
+                        </article><!-- /.featured-course -->
+                    </div><!-- /.col-md-3 -->
+                    @endforelse
+                    
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+            <div class="background background-color-grey-background"></div>
+        </div><!-- /.block -->
+    </section>
+    <!-- /#featured-courses -->
+
+    <section id="latest-courses">
+        <div class="block">
+            <div class="container">
+                <header><h2>Últimos cursos</h2></header>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="latest-course">
+                            <figure class="image">
+                                <div class="image-wrapper"><a href="course-detail-v1.html"><img src="assets/img/course-01.jpg"></a></div>
+                            </figure>
+                            <aside class="description">
+                                <a href="course-detail-v1.html"><h4>Neuroscience for the Beginners: Complete Course</h4></a>
+                                <!--<a href="#" class="course-category">Science</a>-->
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et urna fringilla</p>
+                                <div class="course-meta">
+                                    <span class="course-date"><i class="fa fa-calendar-o"></i>01-03-2014</span>
+                                    <span class="course-length"><i class="fa fa-clock-o"></i>3 months</span>
+                                </div>
+                            </aside>
+                            <hr>
+                        </div><!-- /.latest-course -->
+                    </div><!-- /.col-md-4 -->
+                    <div class="col-md-4">
+                        <div class="latest-course">
+                            <figure class="image">
+                                <div class="image-wrapper"><a href="course-detail-v1.html"><img src="assets/img/course-02.jpg"></a></div>
+                            </figure>
+                            <aside class="description">
+                                <a href="course-detail-v1.html"><h4>Architecture Photography: Power of Light and Shadows</h4></a>
+                                <!--<a href="#" class="course-category">Science</a>-->
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et urna fringilla</p>
+                                <div class="course-meta">
+                                    <span class="course-date"><i class="fa fa-calendar-o"></i>01-03-2014</span>
+                                    <span class="course-length"><i class="fa fa-clock-o"></i>8 lessons</span>
+                                </div>
+                            </aside>
+                            <hr>
+                        </div><!-- /.latest-course -->
+                    </div><!-- /.col-md-4 -->
+                    <div class="col-md-4">
+                        <div class="latest-course">
+                            <figure class="image">
+                                <div class="image-wrapper"><a href="course-detail-v1.html"><img src="assets/img/course-03.jpg"></a></div>
+                            </figure>
+                            <aside class="description">
+                                <a href="course-detail-v1.html"><h4>Character Drawing: Basic and Advanced Principles</h4></a>
+                                <!--<a href="#" class="course-category">Science</a>-->
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et urna fringilla</p>
+                                <div class="course-meta">
+                                    <span class="course-date"><i class="fa fa-calendar-o"></i>01-03-2014</span>
+                                    <span class="course-length"><i class="fa fa-clock-o"></i>8 lessons</span>
+                                </div>
+                            </aside>
+                            <hr>
+                        </div><!-- /.latest-course -->
+                    </div><!-- /.col-md-4 -->
+                </div><!-- /.row -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="latest-course">
+                            <figure class="image">
+                                <div class="image-wrapper"><a href="course-detail-v1.html"><img src="assets/img/course-04.jpg"></a></div>
+                            </figure>
+                            <aside class="description">
+                                <a href="course-detail-v1.html"><h4>Introduction to modo 701</h4></a>
+                                <!--<a href="#" class="course-category">Science</a>-->
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et urna fringilla</p>
+                                <div class="course-meta">
+                                    <span class="course-date"><i class="fa fa-calendar-o"></i>01-03-2014</span>
+                                    <span class="course-length"><i class="fa fa-clock-o"></i>3 months</span>
+                                </div>
+                            </aside>
+                            <hr>
+                        </div><!-- /.latest-course -->
+                    </div><!-- /.col-md-4 -->
+                    <div class="col-md-4">
+                        <div class="latest-course">
+                            <figure class="image">
+                                <div class="image-wrapper"><a href="course-detail-v1.html"><img src="assets/img/course-01.jpg"></a></div>
+                            </figure>
+                            <aside class="description">
+                                <a href="course-detail-v1.html"><h4>Become self marketer</h4></a>
+                                <!--<a href="#" class="course-category">Science</a>-->
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et urna fringilla</p>
+                                <div class="course-meta">
+                                    <span class="course-date"><i class="fa fa-calendar-o"></i>01-03-2014</span>
+                                    <span class="course-length"><i class="fa fa-clock-o"></i>8 lessons</span>
+                                </div>
+                            </aside>
+                            <hr>
+                        </div><!-- /.latest-course -->
+                    </div><!-- /.col-md-4 -->
+                    <div class="col-md-4">
+                        <div class="latest-course">
+                            <figure class="image">
+                                <div class="image-wrapper"><a href="course-detail-v1.html"><img src="assets/img/course-02.jpg"></a></div>
+                            </figure>
+                            <aside class="description">
+                                <a href="course-detail-v1.html"><h4>History in complex view</h4></a>
+                                <!--<a href="#" class="course-category">Science</a>-->
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et urna fringilla</p>
+                                <div class="course-meta">
+                                    <span class="course-date"><i class="fa fa-calendar-o"></i>01-03-2014</span>
+                                    <span class="course-length"><i class="fa fa-clock-o"></i>8 lessons</span>
+                                </div>
+                            </aside>
+                            <hr>
+                        </div><!-- /.latest-course -->
+                    </div><!-- /.col-md-4 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.block -->
+    </section>
+    <!-- /#latest-courses -->
+
+    <!-- Testimonial -->
+    <section id="testimonials">
+        <div class="block">
+            <div class="container">
+                <div class="author-carousel">
+                    <div class="author has-dark-background">
+                        <blockquote>
+                            <figure class="author-picture"><img src="assets/img/student-testimonial.jpg" alt=""></figure>
+                            <article class="paragraph-wrapper">
+                                <div class="inner">
+                                    <header>Morbi nec nisi ante. Quisque lacus ligula, iaculis in elit et, interdum semper quam. Fusce in interdum tortor.
+                                        Ut sollicitudin lectus dolor eget imperdiet libero pulvinar sit amet.</header>
+                                    <footer>Claire Doe</footer>
+                                </div>
+                            </article>
+                        </blockquote>
+                    </div><!-- /.author -->
+                    <div class="author has-dark-background">
+                        <blockquote>
+                            <figure class="author-picture"><img src="assets/img/student-testimonial.jpg" alt=""></figure>
+                            <article class="paragraph-wrapper">
+                                <div class="inner">
+                                    <header>Morbi nec nisi ante. Quisque lacus ligula, iaculis in elit et, interdum semper quam. Fusce in interdum tortor.
+                                        Ut sollicitudin lectus dolor eget imperdiet libero pulvinar sit amet.</header>
+                                    <footer>Claire Doe</footer>
+                                </div>
+                            </article>
+                        </blockquote>
+                    </div><!-- /.author -->
+                </div><!-- /.author-carousel -->
+            </div><!-- /.container -->
+        </div><!-- /.block -->
+    </section>
+    <!-- end Testimonial -->
+
+    <section id="course-list">
+        <div class="block">
+            <div class="container">
+                <header><h2>Lista de Cursos</h2></header>
+                <div class="table-responsive">
+                    <table class="table table-hover course-list-table tablesorter">
+                        <thead>
+                        <tr>
+                            <th>Course Name</th>
+                            <th>Course Type</th>
+                            <th class="starts">Starts</th>
+                            <th class="length">Length</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th class="course-title"><a href="course-detail-v1.html">Introduction to modo 701</a></th>
+                            <th class="course-category"><a href="#">Graphic Design and 3D</a></th>
+                            <th>01-03-2014</th>
+                            <th>3 months</th>
+                        </tr>
+                        <tr>
+                            <th class="course-title"><a href="course-detail-v1.html">Become self marketer</a></th>
+                            <th class="course-category"><a href="#">Marketing</a></th>
+                            <th>03-03-2014</th>
+                            <th>2 lessons</th>
+                        </tr>
+                        <tr>
+                            <th class="course-title"><a href="course-detail-v1.html">How to find long term customers</a></th>
+                            <th class="course-category"><a href="#">Marketing</a></th>
+                            <th>06-03-2014</th>
+                            <th>1 month</th>
+                        </tr>
+                        <tr>
+                            <th class="course-title"><a href="course-detail-v1.html">Neuroscience and the future</a></th>
+                            <th class="course-category"><a href="#">Science</a></th>
+                            <th>21-03-2014</th>
+                            <th>3 weeks</th>
+                        </tr>
+                        <tr>
+                            <th class="course-title"><a href="course-detail-v1.html">History in complex view</a></th>
+                            <th class="course-category"><a href="#">History and Psychology</a></th>
+                            <th>06-04-2014</th>
+                            <th>1 lesson</th>
+                        </tr>
+                        <tr>
+                            <th class="course-title"><a href="course-detail-v1.html">Become self marketer</a></th>
+                            <th class="course-category"><a href="#">Marketing</a></th>
+                            <th>03-03-2014</th>
+                            <th>2 lessons</th>
+                        </tr>
+                        <tr>
+                            <th class="course-title"><a href="course-detail-v1.html">How to find long term customers</a></th>
+                            <th class="course-category"><a href="#">Marketing</a></th>
+                            <th>06-03-2014</th>
+                            <th>1 month</th>
+                        </tr>
+                        <tr>
+                            <th class="course-title"><a href="course-detail-v1.html">Neuroscience and the future</a></th>
+                            <th class="course-category"><a href="#">Science</a></th>
+                            <th>21-03-2014</th>
+                            <th>3 weeks</th>
+                        </tr>
+                        <tr>
+                            <th class="course-title"><a href="course-detail-v1.html">History in complex view</a></th>
+                            <th class="course-category"><a href="#">History and Psychology</a></th>
+                            <th>06-04-2014</th>
+                            <th>1 lesson</th>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="card">
-                    <div class="header">
-                        <h2><strong>Instagram</strong> Post</h2>                        
-                    </div>
-                    <div class="body widget">
-                        <ul class="list-unstyled instagram-plugin m-b-0">
-                            <li><a href="#"><img src="/backend/images/blog/05-img.jpg" alt="image description"></a></li>
-                            <li><a href="#"><img src="/backend/images/blog/06-img.jpg" alt="image description"></a></li>
-                            <li><a href="#"><img src="/backend/images/blog/07-img.jpg" alt="image description"></a></li>
-                            <li><a href="#"><img src="/backend/images/blog/08-img.jpg" alt="image description"></a></li>
-                            <li><a href="#"><img src="/backend/images/blog/09-img.jpg" alt="image description"></a></li>
-                            <li><a href="#"><img src="/backend/images/blog/10-img.jpg" alt="image description"></a></li>
-                            <li><a href="#"><img src="/backend/images/blog/11-img.jpg" alt="image description"></a></li>
-                            <li><a href="#"><img src="/backend/images/blog/12-img.jpg" alt="image description"></a></li>
-                            <li><a href="#"><img src="/backend/images/blog/13-img.jpg" alt="image description"></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="header">
-                        <h2><strong>Email</strong> Newsletter <small>Get our products/news earlier than others, let’s get in touch.</small></h2>
-                    </div>
-                    <div class="body widget newsletter">                        
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Enter Email">
-                            <span class="input-group-addon">
-                                <i class="zmdi zmdi-mail-send"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
+                <a href="course-listing.html" class="btn btn-framed btn-color-grey pull-right">Todos los cursos</a>
             </div>
         </div>
-    </div>
-</section>
-                                                                {{-- pie de pagina --}}
-<footer class="footer" style="background-image: url(backend/images/footer.jpg); background-size: 100%; min-height: 110px; text-align:center; color:#fff; no-repeat; ">
+    </section><!-- /.course-list -->
+
+    <!-- Partners, Become a Partner -->
+    <div class="block">
         <div class="container">
-            <nav>
-                <ul>
-                    <li><a href="#" target="_blank">Contactos</a></li>
-                </ul>
-            </nav>
-            <div class="copyright">
-                &copy;
-                <script>
-                    document.write(new Date().getFullYear())
-                </script>,
-                <span>Diseñado por<a href="#" target="_blank">Blink</a></span>
-            </div>
-        </div>
-    </footer>
-<!-- Jquery Core Js --> 
-<script src="/backend/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
-<script src="/backend/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
+            <div class="row">
+                <div class="col-md-9">
+                    <section id="partners">
+                        <header>
+                            <h2>Profesores y Empresas </h2>
+                        </header>
+                        <div class="section-content">
+                            <div class="logos">
+                                <div class="logo"><a href=""><img src="assets/img/logo-partner-01.png" alt=""></a></div>
+                                <div class="logo"><a href=""><img src="assets/img/logo-partner-02.png" alt=""></a></div>
+                                <div class="logo"><a href=""><img src="assets/img/logo-partner-03.png" alt=""></a></div>
+                                <div class="logo"><a href=""><img src="assets/img/logo-partner-04.png" alt=""></a></div>
+                                <div class="logo"><a href=""><img src="assets/img/logo-partner-05.png" alt=""></a></div>
+                            </div>
+                        </div>
+                    </section>
+                </div><!-- /.col-md-9 -->
+                <div class="col-md-3">
+                    <section id="donation">
+                        <header>
+                            <h2>Destacados</h2>
+                        </header>
+                        <div class="section-content">
+                            <a href="" class="universal-button">
+                                <h3>Conviertete en un profesor</h3>
+                                <figure class="date"><i class="fa fa-arrow-right"></i></figure>
+                            </a>
+                        </div><!-- /.section-content -->
+                    </section>
+                </div><!-- /.col-md-3 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div>
+    <!-- end Partners, Become a Partner -->
+</div>
+<!-- end Page Content -->
 
-<script src="/backend/bundles/mainscripts.bundle.js"></script><!-- Custom Js --> 
-</body>
-</html>
+<!-- Footer -->
+@include('layouts.footer')
+
+</div>
+<!-- end Wrapper -->
+
+
+@endsection
+
