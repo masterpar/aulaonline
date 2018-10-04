@@ -41,26 +41,26 @@
                 <header><h2>Cursos Destacados</h2></header>
                 <div class="row">
 
-                    @forelse($courses as $course)
-                    <div class="col-md-3 col-sm-3">
+                    @foreach($courses as $course)
+                    <div class="col-md-3 col-sm-3"  style="margin-top: 10px;">
                         <article class="featured-course">
                             <figure class="image">
                                 <div class="image-wrapper"><a href="course-detail-v1.html"><img src="assets/img/course-01.jpg"></a></div>
                             </figure>
                             <div class="description">
-                                <a href="#"><h3>Character Drawing: Basic and Advanced Principles</h3></a>
-                                <a href="#" class="course-category">Art and Design</a>
+                                <a href="#"><h3>{{$course->name}}</h3></a>
+                                <a href="#" class="course-category">{{$course->category->name}}</a>
                                 <hr>
                                 <div class="course-meta">
                                     <span class="course-date"><i class="fa fa-calendar-o"></i>01-03-2014</span>
                                     <span class="course-length"><i class="fa fa-clock-o"></i>3 months</span>
                                 </div>
-                                <div class="stick-to-bottom"><a href="course-detail-v1.html" class="btn btn-framed btn-color-grey btn-small">Ver Mas</a></div>
+                                <div class="stick-to-bottom"><a href="#" class="btn btn-framed btn-color-grey btn-small">Ver Mas</a></div>
                             </div>
                         </article><!-- /.featured-course -->
                     </div><!-- /.col-md-3 -->
-                    @endforelse
-                    
+                   @endforeach
+                
                 </div><!-- /.row -->
             </div><!-- /.container -->
             <div class="background background-color-grey-background"></div>

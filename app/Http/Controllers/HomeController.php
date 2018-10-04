@@ -20,11 +20,11 @@ class HomeController extends Controller
         ->with('category','teacher','reviews')
         ->where('status', Course::PUBLUSHED)
         ->latest()
-        ->paginate(3);
+        ->paginate(8);
 
     $populares = Course::where('status', Course::PUBLUSHED)
         ->orderBy('id','DESC')
-        ->limit(5)
+        ->limit(4)
         ->get();
         return view('inicio', compact('courses','populares')); 
     }
