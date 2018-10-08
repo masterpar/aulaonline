@@ -11,7 +11,8 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <!-- Favicon-->
 
-    {{-- <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> --}}
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
     <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="assets/css/selectize.css" type="text/css">

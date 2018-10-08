@@ -1,4 +1,4 @@
-        {{-- header  --}}
+        {{-- links  --}}
 @extends('layouts.header-inicio')
 
 @section('contenido')
@@ -6,7 +6,6 @@
 <body class="page-homepage-courses">
 <!-- Wrapper -->
 <div class="wrapper">
-
 
 <!-- Header -->
 <div class="navigation-wrapper">
@@ -38,32 +37,78 @@
     <section id="featured-courses">
         <div class="block">
             <div class="container">
-                <header><h2>Cursos Destacados</h2></header>
-                <div class="row">
+                                                                            {{-- BUSQUEDA CURSOS --}}
+                        <section id="course-search">
+                            <div class="search-box">
+                                <header><span class="fa fa-search"></span><h2>Encuentra el curso para ti</h2></header>
+                                <form id="course-search-form" role="form" class="form-inline">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="course-type">Categorías Cursos</label>
+                                            <select name="course-type" id="course-type">
+                                                <option value="">Graphic Design and 3D</option>
+                                                <option value="2">History and Psychology</option>
+                                                <option value="3">Marketing</option>
+                                                <option value="4">Science</option>
+                                            </select>
+                                        </div><!-- /.form-group -->
 
+                                        <div class="form-group">
+                                            <label for="study-level">Nivel de Estudio</label>
+                                            <select name="study-level" id="study-level">
+                                                <option value="">Study Level</option>
+                                                <option value="2">Beginner</option>
+                                                <option value="3">Advanced</option>
+                                                <option value="4">Intermediate</option>
+                                                <option value="5">Professional</option>
+                                            </select>
+                                        </div><!-- /.form-group -->
+
+                                        <div class="form-group">
+                                            <label for="full-text">Full Text</label>
+                                            <input name="full-text" id="full-text" placeholder="Enter Keyword" type="text">
+                                        </div><!-- /.form-group -->
+                                    </div>
+
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox">Webinar
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="btn pull-right">Search</button>
+                                </form><!-- /#<!-- /.form-group -->
+                            </div><!-- /.course-search-box -->
+                        </section><!-- /#course-search -->
+
+                                                         {{--  FIN BUSQUEDA CURSOS  --}}
+                <div class="row">                
+                    <div class="col-md-8">
                     @foreach($courses as $course)
-                    <div class="col-md-3 col-sm-3"  style="margin-top: 10px;">
+                    <div class="col-md-4 col-sm-6"  style="margin-top: 20px;">
                         <article class="featured-course">
                             <figure class="image">
-                                <div class="image-wrapper"><a href="course-detail-v1.html"><img src="assets/img/course-01.jpg"></a></div>
+                                <div class="image-wrapper"><a href="#"><img src="{{ $course->pathAttachment()}}"></a></div>
                             </figure>
                             <div class="description">
                                 <a href="#"><h3>{{$course->name}}</h3></a>
                                 <a href="#" class="course-category">{{$course->category->name}}</a>
                                 <hr>
                                 <div class="course-meta">
-                                    <span class="course-date"><i class="fa fa-calendar-o"></i>01-03-2014</span>
+                                    <span class="course-date"><i class="fa fa-calendar-o"></i>{{$course->created_at->format('d-m-y')}}</span>
                                     <span class="course-length"><i class="fa fa-clock-o"></i>3 months</span>
                                 </div>
-                                <div class="stick-to-bottom"><a href="#" class="btn btn-framed btn-color-grey btn-small">Ver Mas</a></div>
+                                <div class="stick-to-bottom"><a href="#" class="btn">Ver Mas</a></div>
                             </div>
                         </article><!-- /.featured-course -->
                     </div><!-- /.col-md-3 -->
                    @endforeach
-                
+                  <div class="text-center" > {{$courses->links()}} </div>
+                 </div> {{-- m-d-4 --}}
+                                                         {{--  SIDEBAR --}}
+                                                     @include('layouts.sidebar')
+
                 </div><!-- /.row -->
             </div><!-- /.container -->
-            <div class="background background-color-grey-background"></div>
         </div><!-- /.block -->
     </section>
     <!-- /#featured-courses -->
@@ -183,119 +228,8 @@
     </section>
     <!-- /#latest-courses -->
 
-    <!-- Testimonial -->
-    <section id="testimonials">
-        <div class="block">
-            <div class="container">
-                <div class="author-carousel">
-                    <div class="author has-dark-background">
-                        <blockquote>
-                            <figure class="author-picture"><img src="assets/img/student-testimonial.jpg" alt=""></figure>
-                            <article class="paragraph-wrapper">
-                                <div class="inner">
-                                    <header>Morbi nec nisi ante. Quisque lacus ligula, iaculis in elit et, interdum semper quam. Fusce in interdum tortor.
-                                        Ut sollicitudin lectus dolor eget imperdiet libero pulvinar sit amet.</header>
-                                    <footer>Claire Doe</footer>
-                                </div>
-                            </article>
-                        </blockquote>
-                    </div><!-- /.author -->
-                    <div class="author has-dark-background">
-                        <blockquote>
-                            <figure class="author-picture"><img src="assets/img/student-testimonial.jpg" alt=""></figure>
-                            <article class="paragraph-wrapper">
-                                <div class="inner">
-                                    <header>Morbi nec nisi ante. Quisque lacus ligula, iaculis in elit et, interdum semper quam. Fusce in interdum tortor.
-                                        Ut sollicitudin lectus dolor eget imperdiet libero pulvinar sit amet.</header>
-                                    <footer>Claire Doe</footer>
-                                </div>
-                            </article>
-                        </blockquote>
-                    </div><!-- /.author -->
-                </div><!-- /.author-carousel -->
-            </div><!-- /.container -->
-        </div><!-- /.block -->
-    </section>
-    <!-- end Testimonial -->
 
-    <section id="course-list">
-        <div class="block">
-            <div class="container">
-                <header><h2>Lista de Cursos</h2></header>
-                <div class="table-responsive">
-                    <table class="table table-hover course-list-table tablesorter">
-                        <thead>
-                        <tr>
-                            <th>Course Name</th>
-                            <th>Course Type</th>
-                            <th class="starts">Starts</th>
-                            <th class="length">Length</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th class="course-title"><a href="course-detail-v1.html">Introduction to modo 701</a></th>
-                            <th class="course-category"><a href="#">Graphic Design and 3D</a></th>
-                            <th>01-03-2014</th>
-                            <th>3 months</th>
-                        </tr>
-                        <tr>
-                            <th class="course-title"><a href="course-detail-v1.html">Become self marketer</a></th>
-                            <th class="course-category"><a href="#">Marketing</a></th>
-                            <th>03-03-2014</th>
-                            <th>2 lessons</th>
-                        </tr>
-                        <tr>
-                            <th class="course-title"><a href="course-detail-v1.html">How to find long term customers</a></th>
-                            <th class="course-category"><a href="#">Marketing</a></th>
-                            <th>06-03-2014</th>
-                            <th>1 month</th>
-                        </tr>
-                        <tr>
-                            <th class="course-title"><a href="course-detail-v1.html">Neuroscience and the future</a></th>
-                            <th class="course-category"><a href="#">Science</a></th>
-                            <th>21-03-2014</th>
-                            <th>3 weeks</th>
-                        </tr>
-                        <tr>
-                            <th class="course-title"><a href="course-detail-v1.html">History in complex view</a></th>
-                            <th class="course-category"><a href="#">History and Psychology</a></th>
-                            <th>06-04-2014</th>
-                            <th>1 lesson</th>
-                        </tr>
-                        <tr>
-                            <th class="course-title"><a href="course-detail-v1.html">Become self marketer</a></th>
-                            <th class="course-category"><a href="#">Marketing</a></th>
-                            <th>03-03-2014</th>
-                            <th>2 lessons</th>
-                        </tr>
-                        <tr>
-                            <th class="course-title"><a href="course-detail-v1.html">How to find long term customers</a></th>
-                            <th class="course-category"><a href="#">Marketing</a></th>
-                            <th>06-03-2014</th>
-                            <th>1 month</th>
-                        </tr>
-                        <tr>
-                            <th class="course-title"><a href="course-detail-v1.html">Neuroscience and the future</a></th>
-                            <th class="course-category"><a href="#">Science</a></th>
-                            <th>21-03-2014</th>
-                            <th>3 weeks</th>
-                        </tr>
-                        <tr>
-                            <th class="course-title"><a href="course-detail-v1.html">History in complex view</a></th>
-                            <th class="course-category"><a href="#">History and Psychology</a></th>
-                            <th>06-04-2014</th>
-                            <th>1 lesson</th>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <a href="course-listing.html" class="btn btn-framed btn-color-grey pull-right">Todos los cursos</a>
-            </div>
-        </div>
-    </section><!-- /.course-list -->
-
-    <!-- Partners, Become a Partner -->
+     <!-- Partners, Become a Partner -->
     <div class="block">
         <div class="container">
             <div class="row">

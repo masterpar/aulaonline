@@ -806,7 +806,7 @@ button.dim:active:before {
 .label {
   background-color: #d1dade;
   color: #5e5e5e;
-  font-family: 'Open Sans';
+  font-family: 'Uni Neue';
   font-size: 10px;
   font-weight: 600;
   padding: 3px 8px;
@@ -994,6 +994,7 @@ button.dim:active:before {
   line-height: 1.42857;
   margin-left: -1px;
   padding: 4px 10px;
+  padding-left: 1;
   position: relative;
   text-decoration: none;
 }

@@ -1,11 +1,11 @@
            
-<li><a href="#"><i class="fa fa-user"></i>{{__(" Perfil")}}</a></li>
-<li><a href="#">{{__(" Suscripción")}}</a></li>
-<li><a href="#">{{__(" Facturas")}}</a></li>
-<li><a href="#">{{__(" Cursos")}}</a></li>
+<li><a href="#"><i class="fa fa-user"></i>{{__("Perfil")}}</a></li>
+<li><a href="#">{{__("Suscripción")}}</a></li>
+<li><a href="#">{{__("Facturas")}}</a></li>
+<li><a href="#">{{__("Cursos")}}</a></li>
 
 
-<li class="float-right" role="button">
+<li  role="button">
 <a  data-close="true" href="{{ route('logout') }}"
        onclick="event.preventDefault();
        document.getElementById('logout-form').submit();">

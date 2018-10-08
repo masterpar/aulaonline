@@ -48,32 +48,35 @@
                         <div class="col-md-6">
                             <section id="account-sign-in" class="account-block">
                                 <header><h2>Iniciar Sesión</h2></header>
-                                <form class="form" method=" POST" action="{{ route('login') }}" aria-label="{{ __('Register') }}">
+                                <form class="form" role="form" method="POST" action="{{ url('login') }}" }}">
                                    @csrf
+
                                                                 {{-- email   --}} 
                                     <div class="input-group">
-                                    <input type="text" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                    <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
                                     name="email" placeholder="Email" value="{{ old('email') }}" required autofocus>
                                     </div>
                                     {{-- errors --}}
                                     @if ($errors->has('email'))
                                                     <li class="alert alert-danger" role="alert">
-                                                        <strong>{{ $errors->first('email') }}</strong>
+                                                        <span><strong>{{ $errors->first('email') }}</strong></span>
                                                     </li>
                                     @endif
                                                                {{-- contraseña   --}} 
                                     <div class="input-group">
-                                    <input type="password" placeholder="Constraseña" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                    <input type="password" placeholder="Contraseña" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}"
                                     name="password" value="{{ old('password') }}" required autofocus>
                                     </div>
                                      {{-- errors --}}
                                     @if ($errors->has('password'))
                                                     <li class="alert alert-danger" role="alert">
-                                                        <strong>{{ $errors->first('password') }}</strong>
+                                                        <span><strong>{{ $errors->first('password') }}</strong></span>
                                                     </li>
                                     @endif
+
+
                                     <button type="submit" class="btn btn-primary">
-                                    Iniciar <i class="fa fa-btn fa-sign-in"></i>
+                                    {{ __('Iniciar') }} <i class="fa fa-btn fa-sign-in"></i>
                                     </button> 
                                                                  {{--  login Social --}}
                                     <div class="input-group">
