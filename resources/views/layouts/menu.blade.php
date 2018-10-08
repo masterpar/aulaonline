@@ -9,7 +9,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <div class="navbar-brand nav" id="brand">
-                        <a href="{{url('/')}}"><img src="assets/img/logo.svg" alt="brand"></a>
+                        <a href="{{url('/')}}"><img src="/assets/img/logo.svg" alt="brand"></a>
                     </div>
                 </div>
                 <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">

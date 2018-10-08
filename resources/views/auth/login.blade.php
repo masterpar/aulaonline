@@ -88,7 +88,7 @@
                         <div class="col-md-6">
                             <section id="account-register" class="account-block">                                
                                 <header><h2>Crear Cuenta</h2></header>
-                                <form class="form" method=" POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+                                <form class="form" method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                                    @csrf
                                                                      {{-- nombres   --}}                                            
                                     <div class="input-group">

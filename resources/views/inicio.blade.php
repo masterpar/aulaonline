@@ -23,7 +23,7 @@
 @include('layouts.menu')
 
     <div class="background">
-        <img src="assets/img/background-city.png"  alt="background">
+        <img src="/assets/img/background-city.png"  alt="background">
     </div>
 </div>
 <!-- end Header -->
@@ -97,7 +97,7 @@
                                     <span class="course-date"><i class="fa fa-calendar-o"></i>{{$course->created_at->format('d-m-y')}}</span>
                                     <span class="course-length"><i class="fa fa-clock-o"></i>3 months</span>
                                 </div>
-                                <div class="stick-to-bottom"><a href="#" class="btn">Ver Mas</a></div>
+                                <div class="stick-to-bottom"><a href="{{route('courses.detail',$course)}}" class="btn">Ver Mas</a></div>
                             </div>
                         </article><!-- /.featured-course -->
                     </div><!-- /.col-md-3 -->

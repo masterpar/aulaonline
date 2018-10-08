@@ -30,7 +30,10 @@ class CourseController extends Controller
 
     	//->withCount('reviews', 'students')->where('slug',$course->slug)->get();
     	//$related = $course->relatedCourses();
-
-    	dd($course);
+        $populares = Course::where('status', Course::PUBLUSHED)
+        ->orderBy('id','DESC')
+        ->limit(3)
+        ->get();
+    	return view('cursos.curso',compact('course','populares'));
     }
 }
