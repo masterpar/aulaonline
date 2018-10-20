@@ -22,7 +22,7 @@ class HomeController extends Controller
         ->latest()
         ->paginate(6);
 
-    $populares = Course::where('status', Course::PUBLUSHED)
+        $populares = Course::where('status', Course::PUBLUSHED)
         ->orderBy('id','DESC')
         ->limit(3)
         ->get();

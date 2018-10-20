@@ -66,6 +66,7 @@
                                         <script type="text/javascript">var _date = 'Mar 27, 2015 23:28';</script>
                                     </div><!-- /.count-down-wrapper -->
 
+                                          {{--   botón de acción --}}
                                     @include('cursos.layouts.action_button')
                                     
                                 </div><!-- /.course-count-down -->
@@ -77,11 +78,9 @@
                             </section><!-- /#course-header -->
 
                             <section id="course-brief">
-                                <header><h2>Resumen del Curso</h2></header>
+                                <header><h1>¿Que vamos a hacer?</h1></header>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et urna fringilla, volutpat elit non,
-                                    tristique lectus. Nam blandit odio nisl, ac malesuada lacus fermentum sit amet. Vestibulum vitae
-                                    aliquet felis, ornare feugiat elit. Nulla varius condimentum elit, sed pulvinar leo sollicitudin vel.
+                                    {{ $course->description}}
                                 </p>
                             </section><!-- /#course-brief -->
 
@@ -231,7 +230,7 @@
                                                 </article>
                                             </div><!-- /.author -->
                                             <div class="author-block course-speaker">
-                                                <a href="member-detail.html"><figure class="author-picture"><img src="assets/img/discussion-author-03.jpg" alt=""></figure></a>
+                                                <a href="member-detail.html"><figure class="author-picture"><img src="/assets/img/discussion-author-03.jpg" alt=""></figure></a>
                                                 <article class="paragraph-wrapper">
                                                     <div class="inner">
                                                         <a href="member-detail.html"><header>John Doe</header></a>
@@ -247,20 +246,20 @@
                                     </div>
                                     <div class="tab-pane fade" id="tab-gallery">
                                         <ul class="gallery-list">
-                                            <li><a href="assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-01.jpg" alt=""></a></li>
-                                            <li><a href="assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-02.jpg" alt=""></a></li>
-                                            <li><a href="assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-03.jpg" alt=""></a></li>
-                                            <li><a href="assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-04.jpg" alt=""></a></li>
-                                            <li><a href="assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-05.jpg" alt=""></a></li>
-                                            <li><a href="assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-06.jpg" alt=""></a></li>
-                                            <li><a href="assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-07.jpg" alt=""></a></li>
-                                            <li><a href="assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-08.jpg" alt=""></a></li>
-                                            <li><a href="assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-09.jpg" alt=""></a></li>
-                                            <li><a href="assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-10.jpg" alt=""></a></li>
-                                            <li><a href="assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-11.jpg" alt=""></a></li>
-                                            <li><a href="assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-12.jpg" alt=""></a></li>
-                                            <li><a href="assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-13.jpg" alt=""></a></li>
-                                            <li><a href="assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-14.jpg" alt=""></a></li>
+                                            <li><a href="/assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-01.jpg" alt=""></a></li>
+                                            <li><a href="/assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-02.jpg" alt=""></a></li>
+                                            <li><a href="/assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-03.jpg" alt=""></a></li>
+                                            <li><a href="/assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-04.jpg" alt=""></a></li>
+                                            <li><a href="/assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-05.jpg" alt=""></a></li>
+                                            <li><a href="/assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-06.jpg" alt=""></a></li>
+                                            <li><a href="/assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-07.jpg" alt=""></a></li>
+                                            <li><a href="/assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-08.jpg" alt=""></a></li>
+                                            <li><a href="/assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-09.jpg" alt=""></a></li>
+                                            <li><a href="/assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-10.jpg" alt=""></a></li>
+                                            <li><a href="/assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-11.jpg" alt=""></a></li>
+                                            <li><a href="/assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-12.jpg" alt=""></a></li>
+                                            <li><a href="/assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-13.jpg" alt=""></a></li>
+                                            <li><a href="/assets/img/gallery-big-image.jpg" class="image-popup"><img src="/assets/img/image-14.jpg" alt=""></a></li>
                                         </ul>
                                     </div>
                                     <div class="tab-pane fade" id="tab-faq">
@@ -311,62 +310,6 @@
                                 </div><!-- /Tab panes -->
                             </section><!-- /#course-tabs -->
 
-                            <section id="course-info">
-                                <header><h2>Course Info</h2></header>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et urna fringilla, volutpat elit non,
-                                    tristique lectus. Nam blandit odio nisl, ac malesuada lacus fermentum sit amet. Vestibulum vitae
-                                    aliquet felis, ornare feugiat elit. Nulla varius condimentum elit, sed pulvinar leo sollicitudin vel.
-                                </p>
-                                <p>
-                                    Maecenas sodales, nisl eget dignissim molestie, ligula est consectetur metus, et mollis justo urna
-                                    sit amet nulla. Etiam lectus arcu, pellentesque eu tellus tempor, tristique ultrices leo. Nullam at
-                                    felis mauris. Aenean in neque eu ligula tempor ornare. Mauris tristique in elit a blandit. Nam laoreet
-                                    vulputate nisi eu accumsan. Sed faucibus arcu nec est facilisis dignissim. Fusce risus leo, euismod ut
-                                    cursus vitae, imperdiet id quam. Pellentesque habitant morbi tristique senectus et netus et malesuada
-                                    fames ac turpis egestas. Fusce mollis mi vulputate leo vestibulum, quis scelerisque libero condimentum.
-                                    Praesent rutrum consequat lacus quis suscipit. Proin dapibus mi non semper lobortis.
-                                </p>
-                                <p>
-                                    Ut dignissim placerat est, sit amet tincidunt enim. Sed nisi nisi, ornare vitae lacinia a, mattis quis tortor.
-                                    Suspendisse ornare adipiscing nunc, sit amet aliquam diam condimentum quis. Sed in leo sit amet sapien
-                                    porttitor vestibulum a ut est. In hac habitasse platea dictumst. Mauris quam dui, cursus nec lorem non,
-                                    pellentesque elementum dui. Vestibulum volutpat, risus vitae scelerisque fringilla, ligula nisi egestas
-                                    sem, id vulputate ligula nulla ac ligula.
-                                </p>
-                            </section><!-- /#course-info -->
-
-                            <section id="presentation">
-                                <header><h2>Carta de Presentación</h2></header>
-                                <div class="presentation" style="width: 100%">
-                                    <a class="pdf-object" href="/assets/pdf/presentation.pdf" style="width: 100%">Course Presentation</a>
-                                </div>
-                            </section>
-
-                            <section id="learning-material">
-                                <header><h2>Material de aprendizaje</h2></header>
-                                <article class="learning-material">
-                                    <figure class="learning-material-picture"><img src="/assets/img/book-01.jpg" alt=""></figure>
-                                    <div class="learning-material-description">
-                                        <h4>1000 Chairs</h4>
-                                        <figure>Charlotte & Peter Fiell</figure>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu lacus ut ipsum laoreet laoreet.
-                                            Nam sollicitudin porta ornare.
-                                        </p>
-                                    </div>
-                                </article><!-- /.learning-material -->
-                                <article class="learning-material">
-                                    <figure class="learning-material-picture"><img src="/assets/img/book-02.jpg" alt=""></figure>
-                                    <div class="learning-material-description">
-                                        <h4>The App & Mobile Case Study Book</h4>
-                                        <figure>Rob Ford, Julius Wiedemann</figure>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu lacus ut ipsum laoreet laoreet.
-                                            Nam sollicitudin porta ornare.
-                                        </p>
-                                    </div>
-                                </article><!-- /.learning-material -->
-                            </section><!-- /#learning-material -->
-
                             <section id="invited-persons">
                                 <header><h2>Personas Invitadas</h2></header>
                                 <div class="author-block">
@@ -396,34 +339,6 @@
                                     </article>
                                 </div><!-- /.author -->
                             </section><!-- /#invited-persons -->
-
-                            <section id="sponsors">
-                                <header><h2>Profesores</h2></header>
-                                <div class="section-content">
-                                    <div class="logos">
-                                        <div class="logo"><a href=""><img src="/assets/img/logo-partner-01.png" alt=""></a></div>
-                                        <div class="logo"><a href=""><img src="/assets/img/logo-partner-02.png" alt=""></a></div>
-                                        <div class="logo"><a href=""><img src="/assets/img/logo-partner-03.png" alt=""></a></div>
-                                        <div class="logo"><a href=""><img src="/assets/img/logo-partner-04.png" alt=""></a></div>
-                                    </div>
-                                </div>
-                            </section><!-- /#sponsors -->
-
-                            <section id="join-to-course" class="center">
-                                <a href="register-sign-in.html" class="btn">Unirme al Curso</a>
-                            </section><!-- /#join-to-course -->
-
-                            <hr>
-
-                            <section id="rating">
-                                <header><h2>Califica el Curso</h2></header>
-                                <div class="center">
-                                    <div class="rating-user">
-                                        <div class="inner"></div>
-                                        <div id="hint"></div>
-                                    </div>
-                                </div>
-                            </section>
 
                             <section id="comments">
                                 <header><h2>Comentarios</h2></header>
@@ -553,8 +468,11 @@
                 </div><!-- /#page-main -->
             </div><!-- /.col-md-8 -->
         
-                                                {{--  SIDEBAR --}}
-                                                     @include('layouts.sidebar')
+                                                {{--  SIDEBAR --}}  
+                           @include('cursos.layouts.sidebar', ['goals'      => $course->goals,
+                                                            '   requisitos' => $course->requirements,
+                                                                'relared'   => $related,
+                                                               ])
         </div><!-- /.row -->
     </div><!-- /.container -->
 </div>

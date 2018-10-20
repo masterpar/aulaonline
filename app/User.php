@@ -9,11 +9,13 @@ use App\User;
 use App\UserSocialAccount;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Cashier\Billable;
 
 
 class User extends Authenticatable
 {
     use Notifiable, Billable;
+
 
     protected static function boot(){
         parent::boot();

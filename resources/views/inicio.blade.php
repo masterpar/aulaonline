@@ -9,7 +9,6 @@
 
 <!-- Header -->
 <div class="navigation-wrapper">
-
                 {{--  menú usuario --}}
     <div class="secondary-navigation-wrapper">
         <div class="container">
@@ -65,8 +64,8 @@
                                         </div><!-- /.form-group -->
 
                                         <div class="form-group">
-                                            <label for="full-text">Full Text</label>
-                                            <input name="full-text" id="full-text" placeholder="Enter Keyword" type="text">
+                                            <label for="full-text">Texto</label>
+                                            <input name="full-text" id="full-text" placeholder="Palabra Clave" type="text">
                                         </div><!-- /.form-group -->
                                     </div>
 
@@ -75,7 +74,7 @@
                                             <input type="checkbox">Webinar
                                         </label>
                                     </div>
-                                    <button type="submit" class="btn pull-right">Search</button>
+                                    <button type="submit" class="btn pull-right">Buscar</button>
                                 </form><!-- /#<!-- /.form-group -->
                             </div><!-- /.course-search-box -->
                         </section><!-- /#course-search -->

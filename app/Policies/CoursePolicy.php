@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Course;
 use App\Role;
 use App\User;
 use App\model;
@@ -23,6 +24,6 @@ class CoursePolicy
 
   public function inscribe(User $user, Course $course)		
   {
-  	return $course->students->contains($user->student->id);
+  	return ! $course->students->contains($user->student->id);
   }
 }
