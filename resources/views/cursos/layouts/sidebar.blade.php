@@ -13,7 +13,7 @@
                                     <img src="{{ $relatedCourse->pathAttachment() }}"></a></div>
                             </figure>
                             <div class="description">
-                                <a href="course-detail-v1.html"><h3>{{ $relatedCourse->name}}</h3></a>
+                                <a href="{{ route('courses.detail', $relatedCourse->slug) }}"><h3>{{ $relatedCourse->name}}</h3></a>
                                 <a href="#" class="course-category">{{$relatedCourse->category->name}}</a>
                                 <hr>
                                 <div class="course-meta">
@@ -28,7 +28,6 @@
                                 no hay ningún curso relacionado
                     @endforelse
                         
-                    @endempty
 
                                                            {{--  requisitos --}}
                            <aside id="archive">

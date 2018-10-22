@@ -470,8 +470,8 @@
         
                                                 {{--  SIDEBAR --}}  
                            @include('cursos.layouts.sidebar', ['goals'      => $course->goals,
-                                                            '   requisitos' => $course->requirements,
-                                                                'relared'   => $related,
+                                                               'requisitos' => $course->requirements,
+                                                                'related'   => $related,
                                                                ])
         </div><!-- /.row -->
     </div><!-- /.container -->
